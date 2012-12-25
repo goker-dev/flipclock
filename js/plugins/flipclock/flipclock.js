@@ -1,7 +1,7 @@
 /*
  * flipclock
  * Version: 1.0.0 
- * Original authors: @ademilter @gokercebeci
+ * Authors: @gokercebeci
  * Licensed under the MIT license
  * Demo: http://
  */
@@ -14,15 +14,26 @@
         pad: function(n) {
             return (n < 10) ? '0' + n : n;
         },
-        time: function() {
-            var d = new Date();
-            var t = methods.pad(d.getHours())
+        time: function(date) {
+            if (date) {
+                var e = new Date(date);
+                var b = new Date();
+                var d = new Date(e.getTime() - b.getTime());
+            } else
+                var d = new Date();
+            var t = methods.pad(date ? d.getFullYear() - 70 : d.getFullYear())
+                    + '' + methods.pad(date ? d.getMonth() : d.getMonth() + 1)
+                    + '' + methods.pad(date ? d.getDate() - 1 : d.getDate())
+                    + '' + methods.pad(d.getHours())
                     + '' + methods.pad(d.getMinutes())
                     + '' + methods.pad(d.getSeconds());
             return {
-                'h': {'d2': t.charAt(0), 'd1': t.charAt(1)},
-                'm': {'d2': t.charAt(2), 'd1': t.charAt(3)},
-                's': {'d2': t.charAt(4), 'd1': t.charAt(5)}
+                'Y': {'d2': t.charAt(2), 'd1': t.charAt(3)},
+                'M': {'d2': t.charAt(4), 'd1': t.charAt(5)},
+                'D': {'d2': t.charAt(6), 'd1': t.charAt(7)},
+                'h': {'d2': t.charAt(8), 'd1': t.charAt(9)},
+                'm': {'d2': t.charAt(10), 'd1': t.charAt(11)},
+                's': {'d2': t.charAt(12), 'd1': t.charAt(13)}
             };
         },
         play: function(c) {
@@ -30,7 +41,7 @@
             var a = $('ul' + c + ' section.active');
             if (a.html() == undefined) {
                 a = $('ul' + c + ' section').eq(0);
-                a.addClass('before')
+                a.addClass('ready')
                         .removeClass('active')
                         .next('section')
                         .addClass('active')
@@ -39,16 +50,16 @@
 
             }
             else if (a.is(':last-child')) {
-                $('ul' + c + ' section').removeClass('before');
-                a.addClass('before').removeClass('active');
+                $('ul' + c + ' section').removeClass('ready');
+                a.addClass('ready').removeClass('active');
                 a = $('ul' + c + ' section').eq(0);
                 a.addClass('active')
                         .closest('body')
                         .addClass('play');
             }
             else {
-                $('ul' + c + ' section').removeClass('before');
-                a.addClass('before')
+                $('ul' + c + ' section').removeClass('ready');
+                a.addClass('ready')
                         .removeClass('active')
                         .next('section')
                         .addClass('active')
@@ -62,7 +73,7 @@
         },
         li: function(c, n) {
             //
-            return '<li class="' + c + '"><section class="before"><div class="up">'
+            return '<li class="' + c + '"><section class="ready"><div class="up">'
                     + '<div class="shadow"></div>'
                     + '<div class="inn"></div></div>'
                     + '<div class="down">'
@@ -78,57 +89,122 @@
         }
     };
     // var defaults = {};
-
     function Plugin(element, options) {
         this.element = element;
+        this.options = options;
         // this.options = $.extend({}, defaults, options);
         // this._defaults = defaults;
         this._name = pluginName;
         this.init();
     }
-
     Plugin.prototype = {
         init: function() {
+            var t, full = false;
 
-            var t = methods.time();
+            if (!this.options || this.options == 'clock') {
+
+                t = methods.time();
+
+            } else if (this.options == 'date') {
+
+                t = methods.time();
+                full = true;
+
+            } else {
+
+                t = methods.time(this.options);
+                full = true;
+
+            }
 
             $(this.element)
                     .addClass('flipclock')
                     .html(
-                    methods.ul('hour', t.h.d2, t.h.d1)
+                    (full ?
+                            methods.ul('year', t.Y.d2, t.Y.d1)
+                            + methods.ul('month', t.M.d2, t.M.d1)
+                            + methods.ul('day', t.D.d2, t.D.d1)
+                            : '')
+                    + methods.ul('hour', t.h.d2, t.h.d1)
                     + methods.ul('minute', t.m.d2, t.m.d1)
-                    + methods.ul('second', t.s.d2, t.s.d1))
+                    + methods.ul('second', t.s.d2, t.s.d1)
+                    + '<audio id="flipclick">'
+                    + '<source src="/js/plugins/flipclock/click.mp3" type="audio/mpeg"/>'
+                    + '</audio>');
 
             setInterval($.proxy(this.refresh, this), 1000);
 
         },
         refresh: function() {
             var el = $(this.element);
-            var t = methods.time();
+            var t;
+            if (!this.options
+                    && !this.options == 'clock'
+                    && !this.options == 'date') {
+
+                t = methods.time(this.options);
+
+            } else
+                t = methods.time()
+
+            // second sound
+            setTimeout(function() {
+                document.getElementById('flipclick').play()
+            }, 500);
 
             // second first digit
-            el.find(".second .d1 .before .inn").html(t.s.d1);
+            el.find(".second .d1 .ready .inn").html(t.s.d1);
             methods.play('.second .d1');
             // second second digit
             if ((t.s.d1 === '0')) {
-                el.find(".second .d2 .before .inn").html(t.s.d2);
+                el.find(".second .d2 .ready .inn").html(t.s.d2);
                 methods.play('.second .d2');
                 // minute first digit
                 if ((t.s.d2 === '0')) {
-                    el.find(".minute .d1 .before .inn").html(t.m.d1);
+                    el.find(".minute .d1 .ready .inn").html(t.m.d1);
                     methods.play('.minute .d1');
                     // minute second digit
                     if ((t.m.d1 === '0')) {
-                        el.find(".minute .d2 .before .inn").html(t.m.d2);
+                        el.find(".minute .d2 .ready .inn").html(t.m.d2);
                         methods.play('.minute .d2');
                         // hour first digit
                         if ((t.m.d2 === '0')) {
-                            el.find(".hour .d1 .before .inn").html(t.h.d1);
+                            el.find(".hour .d1 .ready .inn").html(t.h.d1);
                             methods.play('.hour .d1');
                             // hour second digit
                             if ((t.h.d1 === '0')) {
-                                el.find(".hour .d2 .before .inn").html(t.h.d2);
+                                el.find(".hour .d2 .ready .inn").html(t.h.d2);
                                 methods.play('.hour .d2');
+                                // day first digit
+                                if ((t.h.d2 === '0')) {
+                                    el.find(".day .d1 .ready .inn").html(t.D.d1);
+                                    methods.play('.day .d1');
+                                    // day second digit
+                                    if ((t.D.d1 === '0')) {
+                                        el.find(".day .d2 .ready .inn").html(t.D.d2);
+                                        methods.play('.day .d2');
+                                        // month first digit
+                                        if ((t.D.d2 === '0')) {
+                                            el.find(".month .d1 .ready .inn").html(t.M.d1);
+                                            methods.play('.month .d1');
+                                            // month second digit
+                                            if ((t.M.d1 === '0')) {
+                                                el.find(".month .d2 .ready .inn").html(t.M.d2);
+                                                methods.play('.month .d2');
+                                                // year first digit
+                                                if ((t.M.d2 === '0')) {
+                                                    el.find(".year .d1 .ready .inn").html(t.Y.d1);
+                                                    methods.play('.year .d1');
+                                                    // year second digit
+                                                    if ((t.Y.d1 === '0')) {
+                                                        el.find(".year .d2 .ready .inn").html(t.Y.d2);
+                                                        methods.play('.year .d2');
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -147,4 +223,4 @@
         });
     };
 
-})(typeof jQuery  !== 'undefined' ? jQuery : Zepto);
+})(typeof jQuery !== 'undefined' ? jQuery : Zepto);

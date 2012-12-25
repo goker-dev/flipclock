@@ -1,7 +1,7 @@
 /*
  * flipclock
  * Version: 1.0.0 
- * Original authors: @ademilter @gokercebeci
+ * Authors: @gokercebeci
  * Licensed under the MIT license
  * Demo: http://
 */
@@ -9,6 +9,19 @@
 /*==============================================================================
     FLIP CLOCK
 ==============================================================================*/
+.flipclock {
+}
+.flipclock hr {
+    position: absolute;
+    left: 0;
+    top: 65px;
+    width: 100%;
+    height: 3px;
+    border: 0;
+    background: #000;
+    z-index: 10;
+    opacity: 0;
+}
 ul.flip {
     position: relative;
     float: left;
@@ -19,8 +32,6 @@ ul.flip {
     font-size: 120px;
     font-weight: bold;
     line-height: 127px;
-    /*border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .7);*/
 }
 
 ul.flip li {
@@ -56,11 +67,12 @@ ul.flip li div {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 50%;
+    height: 49%;
     overflow: hidden;
 }
 
 ul.flip li div .shadow {
+    display: block;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -83,10 +95,10 @@ ul.flip li div div.inn {
     z-index: 1;
     width: 100%;
     height: 200%;
-    color: #ccc;
-    text-shadow: 0 0 8px #000;
+    color: #fff;
+    text-shadow: 0 0 2px #fff;
     text-align: center;
-    background-color: #333;
+    background-color: #000;
     border-radius: 6px;
 }
 
@@ -103,60 +115,69 @@ ul.flip li div.down div.inn {
  PLAY
 --------------------------------------*/
 
-body.play ul section.before {
+body.play ul section.ready {
     z-index: 3;
 }
 
 body.play ul section.active {
-    -webkit-animation: asd .5s .5s linear both;
+    -webkit-animation: index .5s .5s linear both;
     z-index: 2;
 }
 
-@-webkit-keyframes asd {
+@-webkit-keyframes index {
     0% {
-    z-index: 2;
-}
-5% {
-    z-index: 4;
-}
-100% {
-    z-index: 4;
-}
+        z-index: 2;
+    }
+    5% {
+        z-index: 4;
+    }
+    100% {
+        z-index: 4;
+    }
 }
 
 body.play ul section.active .down {
     z-index: 2;
-    -webkit-animation: turn .5s .5s linear both;
+    -webkit-animation: flipdown .5s .5s linear both;
 }
 
-@-webkit-keyframes turn {
+@-webkit-keyframes flipdown {
     0% {
-    -webkit-transform: rotateX(90deg);
-}
-100% {
-    -webkit-transform: rotateX(0deg);
-}
+        -webkit-transform: rotateX(90deg);
+    }  
+    80% {
+        -webkit-transform: rotateX(5deg);
+    } 
+    90% {
+        -webkit-transform: rotateX(15deg);
+    }
+    100% {
+        -webkit-transform: rotateX(0deg);
+    }
 }
 
-body.play ul section.before .up {
+body.play ul section.ready .up {
     z-index: 2;
-    -webkit-animation: turn2 .5s linear both;
+    -webkit-animation: flipup .5s linear both;
 }
 
-@-webkit-keyframes turn2 {
+@-webkit-keyframes flipup {
     0% {
-    -webkit-transform: rotateX(0deg);
-}
-100% {
-    -webkit-transform: rotateX(-90deg);
-}
+        -webkit-transform: rotateX(0deg);
+    }  
+    90% {
+        -webkit-transform: rotateX(0deg);
+    }
+    100% {
+        -webkit-transform: rotateX(-90deg);
+    }
 }
 
 /*--------------------------------------
  SHADOW
 --------------------------------------*/
 
-body.play ul section.before .up .shadow {
+body.play ul section.ready .up .shadow {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, .1)), color-stop(100%, rgba(0, 0, 0, 1)));
     background: linear-gradient(top, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
     background: linear-gradient(to bottom, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 1) 100%);
@@ -172,7 +193,7 @@ body.play ul section.active .up .shadow {
 
 /*DOWN*/
 
-body.play ul section.before .down .shadow {
+body.play ul section.ready .down .shadow {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, .1)));
     background: linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .1) 100%);
@@ -188,18 +209,24 @@ body.play ul section.active .down .shadow {
 
 @-webkit-keyframes show {
     0% {
-    opacity: 0;
-}
-100% {
-    opacity: 1;
-}
+        opacity: 0;
+    }
+    90% {
+        opacity: .10;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes hide {
     0% {
-    opacity: 1;
-}
-100% {
-    opacity: 0;
-}
+        opacity: 1;
+    }  
+    80% {
+        opacity: .20;
+    }
+    100% {
+        opacity: 0;
+    }
 }
