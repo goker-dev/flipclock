@@ -1,6 +1,6 @@
 /*
  * flipclock
- * Version: 1.0.0 
+ * Version: 1.0.1 
  * Authors: @gokercebeci
  * Licensed under the MIT license
  * Demo: http://
@@ -138,9 +138,9 @@
         refresh: function() {
             var el = $(this.element);
             var t;
-            if (!this.options
-                    && !this.options == 'clock'
-                    && !this.options == 'date') {
+            if (this.options
+                    && this.options != 'clock'
+                    && this.options != 'date') {
 
                 t = methods.time(this.options);
 
