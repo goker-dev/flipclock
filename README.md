@@ -34,5 +34,5 @@ SAMPLE
 [3]: http://www.w3schools.com/css3/css3_animations.asp
 [4]: http://zeptojs.com/
 [5]: https://github.com/gokercebeci/flipclock/blob/master/LICENSE.md
-[6]: http://giraytunali.com/
+[6]: http://boraguvenir.com/
 [7]: http://codepen.io/goker/full/lrmio
