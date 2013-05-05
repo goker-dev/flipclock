@@ -16,7 +16,7 @@ full date
     
 countdown
 
-    $('#container').flipclock('2013 01 17 12:00:00');
+    $('#container').flipclock('2014 08 18 12:00:00');
     
     
 LICENSE
