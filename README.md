@@ -25,7 +25,7 @@ It is under the [MIT License][5].
 
 SAMPLE
 -------
-* [giraytunali.com][6]
+* [boraguvenir.com][6]
 * [http://codepen.io/goker/full/lrmio][7]
 
 
