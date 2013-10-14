@@ -35,4 +35,4 @@ SAMPLE
 [4]: http://zeptojs.com/
 [5]: https://github.com/gokercebeci/flipclock/blob/master/LICENSE.md
 [6]: http://boraguvenir.com/
-[7]: http://codepen.io/goker/full/lrmio
+[7]: http://codepen.io/goker/pen/jEALH
