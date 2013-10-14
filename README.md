@@ -25,8 +25,8 @@ It is under the [MIT License][5].
 
 SAMPLE
 -------
-* [boraguvenir.com][6]
-* [http://codepen.io/goker/full/lrmio][7]
+* http://boraguvenir.com/
+* http://codepen.io/goker/pen/jEALH
 
 
 [1]: http://en.wikipedia.org/wiki/Flip_clock
@@ -34,5 +34,3 @@ SAMPLE
 [3]: http://www.w3schools.com/css3/css3_animations.asp
 [4]: http://zeptojs.com/
 [5]: https://github.com/gokercebeci/flipclock/blob/master/LICENSE.md
-[6]: http://boraguvenir.com/
-[7]: http://codepen.io/goker/pen/jEALH
