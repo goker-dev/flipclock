@@ -1,11 +1,11 @@
 flipclock
 =========
 
-flipclock is a [**flip clock**][1] [**jQuery**][2] plugin with [**CSS3 animations**][3] for modern browsers.
-Also, you can use it as a [**Zepto**][4] plugin.
+flipclock is a [**flip clock**](http://en.wikipedia.org/wiki/Flip_clock) [**jQuery**](http://jquery.com/) plugin with
+[**CSS3 animations**](http://www.w3schools.com/css3/css3_animations.asp) for modern browsers.
+Also, you can use it as a [**Zepto**](http://zeptojs.com/) plugin.
 
-USAGE
--------
+##USAGE
 clock
 
     $('#container').flipclock();
@@ -19,18 +19,15 @@ countdown
     $('#container').flipclock('2014 08 18 12:00:00');
     
     
-LICENSE
--------
-It is under the [MIT License][5].
+##LICENSE
+It is under the [MIT License](https://github.com/gokercebeci/flipclock/blob/master/LICENSE.md).
 
-SAMPLE
--------
-* http://boraguvenir.com/
+##SAMPLE
 * http://codepen.io/goker/pen/jEALH
 
 
-[1]: http://en.wikipedia.org/wiki/Flip_clock
-[2]: http://jquery.com/
-[3]: http://www.w3schools.com/css3/css3_animations.asp
-[4]: http://zeptojs.com/
-[5]: https://github.com/gokercebeci/flipclock/blob/master/LICENSE.md
+[1]:
+[2]:
+[3]:
+[4]:
+[5]:

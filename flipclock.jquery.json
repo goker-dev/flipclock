@@ -1,0 +1,33 @@
+{
+  "name": "flipclock",
+  "title": "flipclock",
+  "description": "flip clock is a jQuery plugin for countdown, clock or timer.",
+  "keywords": [
+    "flipclock",
+    "flip",
+    "clock",
+    "countdown",
+    "counter",
+    "time",
+    "timer"
+  ],
+  "version": "2.0.0",
+  "author": {
+    "name": "goker",
+    "url": "http://gokercebeci.com"
+  },
+  "maintainers": [],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/gokercebeci/flipclock/LICENSE.md"
+    }
+  ],
+  "bugs": "https://github.com/gokercebeci/flipclock/issues",
+  "homepage": "https://github.com/gokercebeci/flipclock",
+  "docs": "https://github.com/gokercebeci/flipclock",
+  "download": "https://github.com/gokercebeci/flipclock",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}

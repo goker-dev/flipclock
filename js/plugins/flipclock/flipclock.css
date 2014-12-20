@@ -1,44 +1,32 @@
 /*
  * flipclock
- * Version: 1.0.0 
- * Authors: @gokercebeci
+ * Version: 2.0.0
+ * Authors: goker
  * Licensed under the MIT license
- * Demo: http://
+ * Demo: http://goker.be
 */
 
 /*==============================================================================
     FLIP CLOCK
 ==============================================================================*/
 .flipclock {
-}
-.flipclock hr {
-    position: absolute;
-    left: 0;
-    top: 65px;
     width: 100%;
-    height: 3px;
-    border: 0;
-    background: #000;
-    z-index: 10;
-    opacity: 0;
+    height: 100%;
 }
+
 ul.flip {
     position: relative;
-    float: left;
-    margin: 10px;
+    display: block;
+    margin: 0;
     padding: 0;
-    width: 180px;
-    height: 130px;
-    font-size: 120px;
     font-weight: bold;
-    line-height: 127px;
 }
 
 ul.flip li {
     float: left;
-    margin: 0;
     padding: 0;
-    width: 49%;
+    margin: 0 1%;
+    width: 48%;
     height: 100%;
     -webkit-perspective: 200px;
     list-style: none;
@@ -144,10 +132,10 @@ body.play ul section.active .down {
 @-webkit-keyframes flipdown {
     0% {
         -webkit-transform: rotateX(90deg);
-    }  
+    }
     80% {
         -webkit-transform: rotateX(5deg);
-    } 
+    }
     90% {
         -webkit-transform: rotateX(15deg);
     }
@@ -164,9 +152,9 @@ body.play ul section.ready .up {
 @-webkit-keyframes flipup {
     0% {
         -webkit-transform: rotateX(0deg);
-    }  
+    }
     90% {
-        -webkit-transform: rotateX(0deg);
+        -webkit-transform: rotateX(-10deg);
     }
     100% {
         -webkit-transform: rotateX(-90deg);
@@ -222,7 +210,7 @@ body.play ul section.active .down .shadow {
 @-webkit-keyframes hide {
     0% {
         opacity: 1;
-    }  
+    }
     80% {
         opacity: .20;
     }

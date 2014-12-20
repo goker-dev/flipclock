@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="utf-8" />
-        <title>flipclock</title>
-        <link rel="shortcut icon" href="images/favicon.ico" />
-        <link rel="stylesheet" href="css/main.css" />
-    </head>
-    <body>
-        <div id="mask">
-            <div id="page">
-                <h1>flipclock</h1>
-                <h2>flip clock <i>jQuery</i> or <i>Zepto</i> plugin with <i>CSS3 animation</i>.</h2>
+<head>
+    <meta charset="utf-8"/>
+    <title>flipclock</title>
+    <link rel="shortcut icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="js/plugins/flipclock/flipclock.css"/>
+</head>
+<body>
+<div id="page">
+    <h1>flipclock</h1>
 
-                <div id="container"></div>
+    <h2>flip clock <i>jQuery</i> or <i>Zepto</i> plugin with <i>CSS3 animation</i>.</h2>
 
-                <div class="clearfix"></div>
-                <h2>USAGE</h2>
-                <ul id="usage">
-                    <li class="selected">
-                        clock
-                        <code>$('#container').flipclock();</code>
-                    </li>
-                    <li>
-                        fulldate
-                        <code>$('#container').flipclock('date');</code>
-                    </li>
-                    <li>
-                        countdown
-                        <code>$('#container').flipclock('2014 08 18 12:00:00');</code>
-                    </li>
-                </ul>
-
-
-            </div>
+    <div id="container">
+        <div class="flipclock">
+            <!--<div class="section" data-section="year">year</div>-->
+            <div class="section" data-section="month">month</div>
+            <div class="section" data-section="day">day</div>
+            <div class="section" data-section="hour">hour</div>
+            <div class="section" data-section="minute">min</div>
+            <div class="section" data-section="second">sec</div>
         </div>
-        <link rel="stylesheet" href="js/plugins/flipclock/flipclock.css" />
-        <!--<script src="js/libs/jquery/jquery-1.8.3.min.js"></script>-->
-        <script src="js/libs/zepto/zepto.min.js"></script>
-        <script src="js/plugins/flipclock/flipclock.js"></script>
-        <script>
+    </div>
 
-            $().ready(function() {
+    <div class="clearfix"></div>
+    <h2>USAGE</h2>
+    <ul id="usage">
+        <li class="selected">
+            clock
+            <code>$('.flipclock').flipclock({audio:'/js/plugins/flipclock/click.mp3'});</code>
+        </li>
+        <li>
+            countdown
+            <code>$('.flipclock').flipclock({countdown:'2014 08 18 12:00:00'});</code>
+        </li>
+    </ul>
+    <h2>DEMO</h2>
 
-                $('#container').flipclock();
+    <div id="demo">
+        <a href="http://goker.be">goker.be</a>
+    </div>
 
-            });
 
-        </script>
-    </body>
+</div>
+<script src="js/libs/jquery/jquery-1.8.3.min.js"></script>
+<!--<script src="js/libs/zepto/zepto.min.js"></script>-->
+<script src="js/plugins/flipclock/flipclock.js"></script>
+<script>
+
+    (function () {
+        $('.flipclock').flipclock({
+            countdown: '2016 02 01 00:00:00'
+            , audio: '/js/plugins/flipclock/click.mp3'
+        });
+    })();
+
+</script>
+</body>
 </html>
