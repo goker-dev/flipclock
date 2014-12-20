@@ -49,9 +49,11 @@
 <script src="js/plugins/flipclock/flipclock.js"></script>
 <script>
 
+    // Safari can't parse YYYY MM DD format
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
     (function () {
         $('.flipclock').flipclock({
-            countdown: '2016 02 01 00:00:00'
+            countdown: '02/01/2016 00:00:00'
             , audio: '/js/plugins/flipclock/click.mp3'
         });
     })();
