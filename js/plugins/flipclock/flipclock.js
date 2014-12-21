@@ -151,62 +151,64 @@
         ,
         refresh: function () {
             var el = $(this.element);
-            var t;
+            var t, l = '0';
             if (this.options && this.options['countdown']) {
                 t = methods.time(this.options['countdown']);
+                l = '9';
             } else
-                t = methods.time()
+                t = methods.time();
 
             if (this.options && this.options['audio'])
                 setTimeout(function () {
                     document.getElementById('flipclick').play()
                 }, 500);
 
+
             // second first digit
             el.find(".second .d1 .ready .inn").html(t.s.d1);
             methods.play('.second .d1');
             // second second digit
-            if ((t.s.d1 === '0')) {
+            if ((t.s.d1 === l)) {
                 el.find(".second .d2 .ready .inn").html(t.s.d2);
                 methods.play('.second .d2');
                 // minute first digit
-                if ((t.s.d2 === '0')) {
+                if ((t.s.d2 === l)) {
                     el.find(".minute .d1 .ready .inn").html(t.m.d1);
                     methods.play('.minute .d1');
                     // minute second digit
-                    if ((t.m.d1 === '0')) {
+                    if ((t.m.d1 === l)) {
                         el.find(".minute .d2 .ready .inn").html(t.m.d2);
                         methods.play('.minute .d2');
                         // hour first digit
-                        if ((t.m.d2 === '0')) {
+                        if ((t.m.d2 === l)) {
                             el.find(".hour .d1 .ready .inn").html(t.h.d1);
                             methods.play('.hour .d1');
                             // hour second digit
-                            if ((t.h.d1 === '0')) {
+                            if ((t.h.d1 === l)) {
                                 el.find(".hour .d2 .ready .inn").html(t.h.d2);
                                 methods.play('.hour .d2');
                                 // day first digit
-                                if ((t.h.d2 === '0')) {
+                                if ((t.h.d2 === l)) {
                                     el.find(".day .d1 .ready .inn").html(t.D.d1);
                                     methods.play('.day .d1');
                                     // day second digit
-                                    if ((t.D.d1 === '0')) {
+                                    if ((t.D.d1 === l)) {
                                         el.find(".day .d2 .ready .inn").html(t.D.d2);
                                         methods.play('.day .d2');
                                         // month first digit
-                                        if ((t.D.d2 === '0')) {
+                                        if ((t.D.d2 === l)) {
                                             el.find(".month .d1 .ready .inn").html(t.M.d1);
                                             methods.play('.month .d1');
                                             // month second digit
-                                            if ((t.M.d1 === '0')) {
+                                            if ((t.M.d1 === l)) {
                                                 el.find(".month .d2 .ready .inn").html(t.M.d2);
                                                 methods.play('.month .d2');
                                                 // year first digit
-                                                if ((t.M.d2 === '0')) {
+                                                if ((t.M.d2 === l)) {
                                                     el.find(".year .d1 .ready .inn").html(t.Y.d1);
                                                     methods.play('.year .d1');
                                                     // year second digit
-                                                    if ((t.Y.d1 === '0')) {
+                                                    if ((t.Y.d1 === l)) {
                                                         el.find(".year .d2 .ready .inn").html(t.Y.d2);
                                                         methods.play('.year .d2');
                                                     }
