@@ -92,6 +92,8 @@
     function Plugin(element, options) {
         this.element = element;
         this.options = options;
+        var agent = window.navigator.userAgent.match(/(chromium|chrome|safari)\//i)
+        this.supported = agent && agent[0] ? true : false;
         // this.options = $.extend({}, defaults, options);
         // this._defaults = defaults;
         this._name = pluginName;
@@ -163,54 +165,56 @@
                     document.getElementById('flipclick').play()
                 }, 500);
 
+            if (this.supported) {
 
-            // second first digit
-            el.find(".second .d1 .ready .inn").html(t.s.d1);
-            methods.play('.second .d1');
-            // second second digit
-            if ((t.s.d1 === l)) {
-                el.find(".second .d2 .ready .inn").html(t.s.d2);
-                methods.play('.second .d2');
-                // minute first digit
-                if ((t.s.d2 === l)) {
-                    el.find(".minute .d1 .ready .inn").html(t.m.d1);
-                    methods.play('.minute .d1');
-                    // minute second digit
-                    if ((t.m.d1 === l)) {
-                        el.find(".minute .d2 .ready .inn").html(t.m.d2);
-                        methods.play('.minute .d2');
-                        // hour first digit
-                        if ((t.m.d2 === l)) {
-                            el.find(".hour .d1 .ready .inn").html(t.h.d1);
-                            methods.play('.hour .d1');
-                            // hour second digit
-                            if ((t.h.d1 === l)) {
-                                el.find(".hour .d2 .ready .inn").html(t.h.d2);
-                                methods.play('.hour .d2');
-                                // day first digit
-                                if ((t.h.d2 === l)) {
-                                    el.find(".day .d1 .ready .inn").html(t.D.d1);
-                                    methods.play('.day .d1');
-                                    // day second digit
-                                    if ((t.D.d1 === l)) {
-                                        el.find(".day .d2 .ready .inn").html(t.D.d2);
-                                        methods.play('.day .d2');
-                                        // month first digit
-                                        if ((t.D.d2 === l)) {
-                                            el.find(".month .d1 .ready .inn").html(t.M.d1);
-                                            methods.play('.month .d1');
-                                            // month second digit
-                                            if ((t.M.d1 === l)) {
-                                                el.find(".month .d2 .ready .inn").html(t.M.d2);
-                                                methods.play('.month .d2');
-                                                // year first digit
-                                                if ((t.M.d2 === l)) {
-                                                    el.find(".year .d1 .ready .inn").html(t.Y.d1);
-                                                    methods.play('.year .d1');
-                                                    // year second digit
-                                                    if ((t.Y.d1 === l)) {
-                                                        el.find(".year .d2 .ready .inn").html(t.Y.d2);
-                                                        methods.play('.year .d2');
+                // second first digit
+                el.find(".second .d1 .ready .inn").html(t.s.d1);
+                methods.play('.second .d1');
+                // second second digit
+                if ((t.s.d1 === l)) {
+                    el.find(".second .d2 .ready .inn").html(t.s.d2);
+                    methods.play('.second .d2');
+                    // minute first digit
+                    if ((t.s.d2 === l)) {
+                        el.find(".minute .d1 .ready .inn").html(t.m.d1);
+                        methods.play('.minute .d1');
+                        // minute second digit
+                        if ((t.m.d1 === l)) {
+                            el.find(".minute .d2 .ready .inn").html(t.m.d2);
+                            methods.play('.minute .d2');
+                            // hour first digit
+                            if ((t.m.d2 === l)) {
+                                el.find(".hour .d1 .ready .inn").html(t.h.d1);
+                                methods.play('.hour .d1');
+                                // hour second digit
+                                if ((t.h.d1 === l)) {
+                                    el.find(".hour .d2 .ready .inn").html(t.h.d2);
+                                    methods.play('.hour .d2');
+                                    // day first digit
+                                    if ((t.h.d2 === l)) {
+                                        el.find(".day .d1 .ready .inn").html(t.D.d1);
+                                        methods.play('.day .d1');
+                                        // day second digit
+                                        if ((t.D.d1 === l)) {
+                                            el.find(".day .d2 .ready .inn").html(t.D.d2);
+                                            methods.play('.day .d2');
+                                            // month first digit
+                                            if ((t.D.d2 === l)) {
+                                                el.find(".month .d1 .ready .inn").html(t.M.d1);
+                                                methods.play('.month .d1');
+                                                // month second digit
+                                                if ((t.M.d1 === l)) {
+                                                    el.find(".month .d2 .ready .inn").html(t.M.d2);
+                                                    methods.play('.month .d2');
+                                                    // year first digit
+                                                    if ((t.M.d2 === l)) {
+                                                        el.find(".year .d1 .ready .inn").html(t.Y.d1);
+                                                        methods.play('.year .d1');
+                                                        // year second digit
+                                                        if ((t.Y.d1 === l)) {
+                                                            el.find(".year .d2 .ready .inn").html(t.Y.d2);
+                                                            methods.play('.year .d2');
+                                                        }
                                                     }
                                                 }
                                             }
@@ -221,8 +225,15 @@
                         }
                     }
                 }
-            }
 
+            } else {
+                el.find('.year').html(t.Y.d2 + '' + t.Y.d1)
+                el.find('.month').html(t.M.d2 + '' + t.M.d1)
+                el.find('.day').html(t.D.d2 + '' + t.D.d1)
+                el.find('.hour').html(t.h.d2 + '' + t.h.d1)
+                el.find('.minute').html(t.m.d2 + '' + t.m.d1)
+                el.find('.second').html(t.s.d2 + '' + t.s.d1)
+            }
         }
     };
 

@@ -12,6 +12,7 @@
     <h1>flipclock</h1>
 
     <h2>flip clock <i>jQuery</i> or <i>Zepto</i> plugin with <i>CSS3 animation</i>.</h2>
+    <p>* It works on Chrome, Chromium and Safari!</p>
 
     <div id="container">
         <div class="flipclock">
@@ -49,12 +50,13 @@
 <script src="js/plugins/flipclock/flipclock.js"></script>
 <script>
 
+
     // Safari can't parse YYYY MM DD format
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
     (function () {
         $('.flipclock').flipclock({
             countdown: '02/01/2016 00:00:00'
-            , audio: '/js/plugins/flipclock/click.mp3'
+            //, audio: '/js/plugins/flipclock/click.mp3'
         });
     })();
 
