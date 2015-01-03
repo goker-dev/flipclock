@@ -16,7 +16,8 @@
         },
         time: function (date) {
             if (date) {
-                var e = new Date(date);
+                var a = date.split(/[^0-9]/);
+                var e = new Date(a[0],a[1]-1,a[2],a[3],a[4],a[5] );
                 var b = new Date();
                 var d = new Date(e.getTime() - b.getTime());
             } else
